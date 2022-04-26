@@ -1,0 +1,29 @@
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.association :restaurant, required: false %>
+  <%= f.input :content, required: false %>
+  <!-- adds bootstrap button  -->
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+
+<!-- we need: -->
+<!-- <form action="/restaurants/101/reviews/new" method="post"></form> -->
+<%# simple_form_for [@review] %>
+<!-- this will generate a form with action 'reviews' only! -->
+<!-- which will return error: undefined method `reviews_path'  -->
+<!-- that would give us a '/reviews' and we don't have that in our routes -->
+<!-- in our routes we have: -->
+<!-- /restaurants/:restaurant_id/reviews
+/restaurants/:restaurant_id/reviews/new -->
+<!-- we need action '/restaurants/:id/reviews/new' -->
+
+<!-- we dont have any references added to our restaurant model. We need
+to get the id!! -->
+
+<!-- WHAT TO DO: -->
+<!-- - find restaurant in the reviews controller; -->
+<!-- GO BACK TO TEACHER.MD -->
+
+<%# 
+Helper	HTTP request
+simple_form_for(@review)	POST reviews_path (does not exist)
+simple_form_for([@restaurant, @review])	POST restaurant_reviews_path %>

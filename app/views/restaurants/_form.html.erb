@@ -1,0 +1,6 @@
+<%= simple_form_for(@restaurant) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :rating, as: :radio_buttons, collection: [['Good', '1', { class: "one-star" }], ['Very Good', '2', { class: "two-stars" }], ["Excellent", 3, { class:"three-stars" } ]] %>
+  <%= f.submit %>
+<% end %>

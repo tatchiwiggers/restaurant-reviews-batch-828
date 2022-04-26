@@ -1,0 +1,18 @@
+<h1><%= @restaurant.name %> <%= '⭐' * @restaurant.rating%></h1>
+  <p><%= @restaurant.address%></p>
+
+  <%# iterates over the reviews %>
+  <ul class="list-group">
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item"><%= review.content %></li>
+      <%= link_to 'delete', review_path(review), method: :delete, data: { confirm: "Are you sure?" } %>
+      <hr>
+    <% end %>
+  </ul>
+
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %>  |
+<%= link_to 'Delete Restaurant', restaurant_path(@restaurant), method: :delete, data: { confirm: 'Are you sure?'}%>  |
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
+<hr>
+<%= link_to 'Back to restaurants', restaurants_path %>
